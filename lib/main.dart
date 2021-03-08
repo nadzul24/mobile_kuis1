@@ -3,6 +3,7 @@ import 'package:minggu05_kuis/history.dart';
 import 'convert.dart';
 import 'input.dart';
 import 'history.dart';
+import 'result.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,7 +54,7 @@ class MyHomeState extends State<MyApp> {
             children: [
               // INPUT
               Input(inMinutes: inMinutes),
-              
+
               //DROPDOWN
               DropdownButton<String>(
                 items: listItem.map((String value) {
@@ -71,22 +72,7 @@ class MyHomeState extends State<MyApp> {
                 },
               ),
               //RESULT
-              Container(
-                margin: EdgeInsets.only(top: 20, bottom: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Result",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    Text(
-                      _result.toStringAsFixed(1),
-                      style: TextStyle(fontSize: 30),
-                    )
-                  ],
-                ),
-              ),
+              Result(result: _result),
 
               //CONVERT
               Convert(convertHandler: _count),
