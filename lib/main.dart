@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:minggu05_kuis/history.dart';
 import 'convert.dart';
 import 'input.dart';
+import 'history.dart';
 
 void main() {
   runApp(MyApp());
@@ -87,6 +89,16 @@ class MyHomeState extends State<MyApp> {
               Convert(convertHandler: _count),
 
               //HISTORY
+              Container(
+                margin: EdgeInsets.only(top: 10, bottom: 10),
+                child: Text(
+                  "Conversion History",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              Expanded(
+                child: History(listViewItem: listViewItem),
+              ),
             ],
           ),
         ),
