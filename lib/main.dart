@@ -51,6 +51,9 @@ class MyHomeState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              // INPUT
+              Input(inMinutes: inMinutes),
+              
               //DROPDOWN
               DropdownButton<String>(
                 items: listItem.map((String value) {
