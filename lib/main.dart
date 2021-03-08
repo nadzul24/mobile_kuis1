@@ -19,7 +19,7 @@ class MyHomeState extends State<MyApp> {
 
   TextEditingController inMinutes = new TextEditingController();
 
-  var listItem = ["Second"];
+  var listItem = ["Second", "Hour"];
   List<String> listViewItem = List<String>();
   double _inputUser = 0;
   String _newValue = "Second";
@@ -29,7 +29,10 @@ class MyHomeState extends State<MyApp> {
     setState(() {
       _inputUser = double.parse(inMinutes.text);
 
-      if (_newValue == "Second") _result = _inputUser * 60;
+      if (_newValue == "Second")
+        _result = _inputUser * 60;
+      else
+        _result = _inputUser * 60;
 
       listViewItem.add(_newValue + " : " + _result.toString());
     });
