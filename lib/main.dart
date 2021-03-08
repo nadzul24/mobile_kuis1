@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'convert.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,7 +41,7 @@ class MyHomeState extends State<MyApp> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Konverter Waktu"),
+          title: Text("Time Converter"),
         ),
         body: Container(
           margin: EdgeInsets.all(8),
@@ -70,7 +71,7 @@ class MyHomeState extends State<MyApp> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Hasil",
+                      "Result",
                       style: TextStyle(fontSize: 20),
                     ),
                     Text(
@@ -82,6 +83,7 @@ class MyHomeState extends State<MyApp> {
               ),
 
               //CONVERT
+              Convert(convertHandler: _count),
 
               //HISTORY
             ],
