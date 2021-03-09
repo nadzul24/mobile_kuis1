@@ -1,6 +1,8 @@
 # minggu05_kuis
 
-A new Flutter project.
+5th week quiz Flutter project.
+
+![alt text](https://github.com/nadzul24/mobile_kuis1/blob/master/Capture%20kuis%201.JPG)
 
 ## Getting Started
 
