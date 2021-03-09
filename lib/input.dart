@@ -13,7 +13,7 @@ class Input extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
         controller: inMinutes,
-        decoration: InputDecoration(hintText: "Enter the time in minutes"),
+        decoration: InputDecoration(hintText: "Enter the number"),
         inputFormatters: [
           FilteringTextInputFormatter.allow(RegExp(r'[0-9+\.]')),
         ],

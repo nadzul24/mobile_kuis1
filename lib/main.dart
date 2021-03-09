@@ -19,22 +19,42 @@ class MyHomeState extends State<MyApp> {
 
   TextEditingController inMinutes = new TextEditingController();
 
-  var listItem = ["Second", "Hour"];
+  var listItem = ["Second", "Minutes", "Hour"];
   List<String> listViewItem = List<String>();
   double _inputUser = 0;
-  String _newValue = "Second";
+  String _newValueFrom = "Second";
+  String _newValueTo = "Second";
   double _result = 0;
 
   void _count() {
     setState(() {
       _inputUser = double.parse(inMinutes.text);
+      if (_newValueFrom == "Hour") {
+        if (_newValueTo == "Second")
+          _result = _inputUser * 3600;
+        else if (_newValueTo == "Minutes")
+          _result = _inputUser * 60;
+        else if (_newValueTo == "Hour") 
+          _result = _inputUser * 1;
+      } 
+      else if (_newValueFrom == "Minutes") {
+        if (_newValueTo == "Second")
+          _result = _inputUser * 60;
+        else if (_newValueTo == "Minutes")
+          _result = _inputUser * 1;
+        else if (_newValueTo == "Hour") 
+          _result = _inputUser / 60;
+      } 
+      else if (_newValueFrom == "Second") {
+        if (_newValueTo == "Second")
+          _result = _inputUser * 1;
+        else if (_newValueTo == "Minutes")
+          _result = _inputUser / 60;
+        else if (_newValueTo == "Hour") 
+          _result = _inputUser / 3600;
+      }
 
-      if (_newValue == "Second")
-        _result = _inputUser * 60;
-      else
-        _result = _inputUser * 60;
-
-      listViewItem.add(_newValue + " : " + _result.toString());
+      listViewItem.add(_newValueFrom + " : " + _result.toString() + _newValueTo);
     });
   }
 
@@ -59,6 +79,11 @@ class MyHomeState extends State<MyApp> {
               Input(inMinutes: inMinutes),
 
               //DROPDOWN
+              //FROM
+              Text(
+                "From",
+                style: TextStyle(fontSize: 20),
+              ),
               DropdownButton<String>(
                 items: listItem.map((String value) {
                   return DropdownMenuItem<String>(
@@ -66,14 +91,35 @@ class MyHomeState extends State<MyApp> {
                     child: Text(value),
                   );
                 }).toList(),
-                value: _newValue,
+                value: _newValueFrom,
                 onChanged: (String changeValue) {
                   setState(() {
-                    _newValue = changeValue;
-                    _count();
+                    _newValueFrom = changeValue;
+                    // _count();
                   });
                 },
               ),
+              //TO
+              Text(
+                "To",
+                style: TextStyle(fontSize: 20),
+              ),
+              DropdownButton<String>(
+                items: listItem.map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                value: _newValueTo,
+                onChanged: (String changeValue) {
+                  setState(() {
+                    _newValueTo = changeValue;
+                    // _count();
+                  });
+                },
+              ),
+
               //RESULT
               Result(result: _result),
 
